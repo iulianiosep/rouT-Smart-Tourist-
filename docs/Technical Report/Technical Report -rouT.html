@@ -1,0 +1,110 @@
+<html>
+	<head>
+		<title>rouT</title>
+		<style>
+			body {
+			
+				margin: 100px;
+				
+			}
+		</style>
+	</head>
+		<body>
+			<center><h1>rouT (Smart Tourist)</h1></center>
+			<center><sub>Technical report</sub></center>
+			<br/>
+			<center>
+			<strong>Abstract.</strong> This application is a solution for every traveler or this application can be used by a citizen who don t know very much the other place of his town or<br/>  a family who want to go shopping in a new  town or some students who try to find some fun in other unknown places.<br/> Also this application is a demonstration of using new technologies in a best way to guarantee information for any type of person that is using this application. <br/>rouT is giving a good infrastructure to be used in any kind of condition and you can get the information that you want it in a short time.<br/>
+			</center>	
+			
+			<h2>1.   Introduction</h2>
+			<p>
+				rout (Smart Tourist) is a web application that will help a trav-eler to find out information about an unfamiliar place where he wants to travel. This application could also be useful for the citizens of a Country or a city, to obtain more information about the touristic environment surrounding their town, shopping places and other types of locations which represent points of interests. 
+				This application is an easy solution for any traveler who wants to quickly and efficiently retrieve up-to-date information about the a place where he is located or where he wants to travel. The application will implement a user-friendly interface that will can be used on multiple types of devices, like computers, laptops, tablets, smartphones and oth-er kind of portable widgets which can support web applications.
+				On the other hand, Backpacker’s development structure is thinked to be composed of multiple reusable modules, in such a way to be easily extendable and updated to eventually match new data sources to be implemented.  
+				Backpacker’s modules and functionalities will be implemented using new generation technologies available, both for the semantic web part of the application regarding data storage and retrieval and also for the web application server and client ( Node JS, React.js ). 
+			</p>
+			
+			<h2>2.	Technologies used</h2>
+			<p>
+			<strong>RDF</strong><br/>
+				<p>
+				The Resource Description Framework (RDF) is a family of World Wide Web Con-sortium (W3C) specifications originally designed as a metadata data model. It has come to be used as a general method for conceptual description or modeling of in-formation that is implemented in web resources, using a variety of syntax notations and data serialization formats. It is also used in knowledge management applica-tions.<br/>
+				RDF was adopted as a W3C recommendation in 1999. The RDF 1.0 specification was published in 2004, the RDF 1.1 specification in 2014.<br/>
+				</p>
+			<br/>
+			<strong>AllegroGraph</strong><br/>
+				<p>
+				AllegroGraph is a persistent Resource Description Framework (RDF) graph database. AllegroGraph uses diskbased storage, enabling it to scale to billions of triples while maintaining superior performance. Al-legroGraph supports SPARQL, RDFS++, and Prolog reasoning from Java applications. Allegrograph provides a Representational State Transfer (REST) protocol architecture Figure 2 Allegrograph is used for Geotemporal reasoning and social networking analysis.
+				AllegroGraph comes in multiple flavors and works with multiple pro-gramming languages and environments and as an advantage for Back-packer Recomennder application which uses a server-side application built in NodeJs, the AllegroGraph RDF Server can also be scripted us-ing the JavaScript Language.  Moreover, it is possible to interact with AllegroGrap completely using a RESTful HTTP protocol (using GET, PUT, POST, etc…) to add and delete triples, to query for individual triples and to do SPARQL and selects using the Sesame 2.0 HTTP-interface with some extensions. 
+				</p>
+				<strong>Virtuoso</strong><br/>	
+				<p>
+				Virtuoso is a modern enterprise grade solution for data access, integra-tion, and relational database management (SQL Tables and/or RDF based Property/Predicate Graphs).
+				The unique hybrid server architecture of Virtuoso enables it to offer traditionally distinct server functionality within a single product offer-ing that covers the following areas:
+					<ul>
+						<li>Relational Tables Data Management (Columnar or Column-Store SQL RDBMS) </li>
+						<li>Relational Property Graphs Data Management (SPARQL RDF based Quad Store)</li>
+						<li>Content Management (HTML, TEXT, TURTLE, RDF/XML, JSON, JSON-LD, XML)</li>
+						<li>Web and other Document File Services (Web Document or File Server)</li>
+						<li>Five-Star Linked Open Data Deployment (RDF-based Linked Data Server)</li>
+						<li>Web Application Server (SOAP or RESTful interaction modes)</li>
+					</ul>
+					<img src="3.png" alt="Don't find the right image!">
+				</p>
+
+			<strong>AngularJS ( client level )</strong><br/>
+				<p>
+				AngularJS (commonly referred to as "Angular" or "Angular.js") is a complete JavaScript-based open-source front-end web application framework mainly maintained by Google and by a community of indi-viduals and corporations to address many of the challenges encountered in developing single-page applications. The JavaScript components complement Apache Cordova, the framework used for developing cross-platform mobile apps. It aims to simplify both the development and the testing of such applications by providing a framework for cli-ent-side model–view–controller (MVC) and model–view–viewmodel (MVVM) architectures, along with components commonly used in rich Internet applications.
+				The AngularJS framework works by first reading the HTML page, which has embedded into it additional custom tag attributes. Angular interprets those attributes as directives to bind input or output parts of the page to a model that is represented by standard JavaScript variables. The values of those JavaScript variables can be manually set within the code, or retrieved from static or dynamic JSON resources.
+
+		
+				
+				<h2>3.	Application architecture</h2>
+				<p>
+				The application consists of three main modules:
+				</p>
+				<ul>
+					<li>Client</li>
+					<li>Application Server which hosts an Node JS Web Server together with Express JS Framework and a SPARQL Client</li>
+					<li>AllegroGraph Server which hosts and AllegroGraph RDF Store along with SPARQL Endpoints</li>
+				</ul>
+				
+				<p>
+				In the first phase, the client is using REST API calls and SPARQL Queries to inter-act with the Application Server. Here, the server is using different queries to obtain data from existing linked data repositories, and API calls to 3rd Parties, like Google Places to obtain information about points of interest (reviews, indications) or Google Directions to define the route of the trip. <br/>
+				After this step, the Application Server is querying the database by sending the SPARQL Queries to the AllegroGraph Server. Here, the data is stored as different triples (subject – predicate – object) to define the relationships between the entities involved.<br/>
+				</p>
+				<img src="1.jpg" alt="Don't find the right image!">
+				<h2>4.	Server-side</h2>
+				<p>
+				There will be involved two servers, an application server and a database serv-er. The application server will contain Node JS Web Server along with Express JS Framework and SPARQL Client. Here, there will be used different queries to the existing linked data repositories to get as much possible information for the cli-ent, describing points of interest (hospitals, places to eat or sleep, airports, etc). To get more information, there will be used different API calls to 3rd parties like Google Places and Google Directions.<br/>
+				The other server will store the AllegroGraph database. The data will be find as triples (subject – predicate – object), for example Traveller | is a | person, and User 1 | is a | traveler. This data will be retrieved using SPARQL queries, like:<br/>
+				</p>
+				<br/>
+				<code>
+					PREFIX foaf: <http://xmlns.com/foaf/0.1/> <br/>
+					SELECT ?username ?password<br/>
+					WHERE {<br/>
+  							?person a foaf:Traveller.<br/>
+  							?person foaf:user ?username.<br/>
+  							?person foaf:pass ?password.<br/>
+					}<br/>
+
+				</code>
+				<br/>
+				<img src="2.jpg" alt="Don't find the right image!">
+				<h2>5.	Client-side</h2>
+					<p>
+						On client side, would be a friendly interface that would help the traveler user to understand all the information that this application offers to the user traveler. The user interface have a intuitive structure that would be easy for traveler to find the right information in a quickly way. The interface is responsive that will be a great way to access this application of any kind.<br/>
+						Here, the client sends REST API calls to the application server, along with SPARQL queries, which will be sent later to the database server.<br/>
+
+					</p>
+						<img src="5.png" alt="Don't find the right image!">
+						<h2>6.	Features</h2>
+						<p>
+							The bonus features that this application will have possible to add ge-ospatial semantic information to the World Wide Web. This features would be a strong efficient and smart way to make a great planning of a travel in any place of Earth, with this application you will have a good support to orient yourself in any unfamiliar place you get.
+						</p>
+					
+		</body>
+	
+</html>
