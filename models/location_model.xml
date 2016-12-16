@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:trip="http://www.productontology.org/id/Travel"
+	<item rdf:about="http://www.productontology.org/id/Travel" >
+ 	<title>An example annotation</title>
+ 	<link>http://example.com/geo</link>
+ 	<description>A small description of the place</description>
+ 	<geo:lat>21.38</geo:lat>
+ 	<geo:long>-47.53</geo:long>
+	</item> 
+
+</rdf:Description>
+</rdf:RDF>

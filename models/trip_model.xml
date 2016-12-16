@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<rdf:RDF
+xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+xmlns:trip="http://www.backpacker.com/trip#"
+<rdf:Description
+rdf:about="http://www.backpacker.com/traveller/SbBGk">
+
+	<trip:typeTrip>with familly</trip:typeTrip>
+	<trip:Cost>10 000</trip:Cost>
+	<trip:time>3</trip:time>
+	<trip:vehicle>train</trip:vehicle>
+	
+</rdf:Description>
+
+</rdf:RDF>
