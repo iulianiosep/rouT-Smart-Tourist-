@@ -1,0 +1,25 @@
+#%RAML 1.0 DataType
+
+type: object
+description: "Create user account"
+
+properties:
+  username:
+    type: string
+    required: true
+  name:
+    type: string
+    required: true
+  email:
+    type: string
+    required: true
+    pattern: "/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
+  password:
+    type: string
+    required: true
+    minLength: 6
+    maxLength: 27
+  genre??:
+    type: string
+  age??:
+    type: integer

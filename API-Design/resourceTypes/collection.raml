@@ -1,0 +1,26 @@
+#%RAML 1.0 ResourceType
+description: Collection of available <<resourcePathName>> in rouT.
+uses:
+  type: base.raml
+
+get:
+  description: Get a list of <<resourcePathName>>.
+  responses:
+   200:
+     body:
+       application/json:
+         example: |
+           <<exampleCollection>>
+   404:
+     body:
+       application/json:
+         example: |
+           <<exampleCollection>>
+
+post:
+  description: Create a new <<resourcePathName|!pluralize>>
+  responses:
+       201:
+         body:
+           application/json:
+             type: <<collectionType>>

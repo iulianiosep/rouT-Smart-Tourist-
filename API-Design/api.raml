@@ -1,0 +1,75 @@
+#%RAML 1.0
+title: rouT API
+version: v1
+baseUri: http://api.rout.dev
+types:
+  user: !include ./types/user.raml
+  users: !include ./types/users.raml
+  trip: !include ./types/place.raml
+  trips: !include ./types/places.raml
+
+resourceTypes:
+  base: !include ./resourceTypes/base.raml
+  collection: !include ./resourceTypes/collection.raml
+  collection-item: !include ./resourceTypes/collection-item.raml
+  itemJSON: !include ./resourceTypes/itemJSON.raml
+  itemXML: !include ./resourceTypes/itemXML.raml
+
+/group:
+  /users:
+    type:
+       collection:
+         exampleCollection: !include ./examples/users.json
+         collectionType: users
+    /{userId}:
+      type:
+        collection-item:
+          exampleItem :  !include ./examples/user.json
+          example404 : !include ./examples/trip_404.json
+/trips:
+  type:
+    collection:
+       exampleCollection: !include ./examples/places.json
+       collectionType: trips
+  /{tripId}:
+    uriParameters:
+      tripId:
+        type: string
+        required: true
+    type:
+      collection-item:
+        exampleItem :  !include ./examples/place.json
+        example404 : !include ./examples/trip_404.json
+/location{locName}:
+    uriParameters:
+      locName:
+        type: string
+        required: true
+    /reviews:
+      type:
+        collection:
+           exampleCollection : !include ./examples/reviews.json
+           collectionType: trips
+
+/group/{id}{json}:
+  type:
+    itemJSON:
+      exampleitemjson: !include ./examples/group.json
+      itemJSONType: users
+  uriParameters:
+    id:
+      type: string
+    json:
+      enum: [ .json ]
+      description: Use .json to specify application/ld+json
+/group/{id}{rdf}:
+  type:
+    itemXML:
+      exampleitemxml: !include ./examples/group.rdf
+      itemXMLType: users
+  uriParameters:
+    id:
+      type: string
+    rdf:
+      enum: [ .rdf ]
+      description: Use rdf to specify rdf form

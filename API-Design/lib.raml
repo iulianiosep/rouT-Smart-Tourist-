@@ -1,0 +1,11 @@
+#%RAML 1.0 Library
+
+types:
+  userMetaData: !include ./types/user.raml
+  userData:
+    type: userMetaData 
+  tripMetaData: !include ./types/place.raml
+  tripData:
+      type: tripMetaData
+  test:
+    type: string
