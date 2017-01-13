@@ -1,0 +1,26 @@
+<script type="text/ng-template" id="/components/group-profile/templates/editMemberProfileTpl.html"></script>
+
+
+<div class="user-profile-container">
+    <div class="row">
+        <label> Name </label>
+        <input ng-model="user.name" />
+    </div>
+    <div  class="row">
+        <label> Age </label>
+        <input type="number" ng-model="user.age" />
+    </div>
+    <div  class="row">
+        <label> Genre </label>
+        <select
+            ng-model="user.genre">
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+        </select>
+    </div>
+
+    <div class="">
+        <button ng-click="saveAction()">Save</button>
+        <button ng-click="cancelAction()">Cancel</button>
+    </div>
+</div>

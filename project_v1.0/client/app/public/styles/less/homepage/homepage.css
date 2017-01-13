@@ -1,0 +1,53 @@
+.center-content {
+  margin: 0 auto;
+  width: 95%;
+}
+header {
+  border-bottom: 2px solid #b3b4ff;
+  font-family: 'Open Sans', sans-serif;
+  margin: 0 auto;
+  width: 95%;
+}
+header img {
+  width: 100px;
+}
+.main-area {
+  margin: 0 auto;
+  width: 95%;
+}
+.main-area img {
+  width: 100%;
+}
+.main-area .row {
+  position: relative;
+  width: 100%;
+}
+.main-area .row .message {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 30px;
+  color: #FFF;
+}
+.header-container {
+  background: linear-gradient(#2632ff, #757bff);
+  -webkit-border-radius: 2%;
+  -moz-border-radius: 2%;
+  border-radius: 2%;
+  display: flex;
+  justify-content: space-around;
+}
+.header-category {
+  display: flex;
+}
+.header-item {
+  cursor: pointer;
+  color: #f5fff5;
+  list-style: none;
+  font-stretch: expanded;
+  padding-right: 20px;
+  align-self: center;
+}
+.header-item:hover {
+  transform: scale(1.1, 1.1);
+}

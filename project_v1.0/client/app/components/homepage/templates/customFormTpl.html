@@ -1,0 +1,27 @@
+<script type="text/ng-template" id="/components/homepage/templates/customFormTpl.html"></script>
+
+<div
+        ng-show="showModal"
+        class="modal">
+    <form class="modal-content animate">
+        <div class="imgcontainer">
+            <span ng-click="closeModal()" class="close" title="Close Modal">&times;</span>
+            <img src="../../../public/images/avatar2.jpg" alt="Avatar" class="avatar">
+        </div>
+        <div class="title">{{ form.title }}</div>
+        <div class="container">
+            <div ng-repeat="field in form.fields">
+                <label><b>{{ field.label }}</b></label>
+                <input
+                        ng-model="field.value"
+                        type="{{ field.type }}"
+                        placeholder="{{ field.placeholder }}">
+            </div>
+            <button type="submit" ng-click="confirm()">{{form.confirmLabel}}</button>
+        </div>
+        <div class="container">
+            <button type="button" ng-click="closeModal()" class="cancelbtn">Cancel</button>
+        </div>
+    </form>
+</div>
+
