@@ -20,11 +20,18 @@
   <link rel="stylesheet" href="public/styles/css/groupProfile/groupProfile.css">
 
 </head>
+<a href="/test"> TEST Page </a>
 <body  ng-cloak>
   <div ng-view></div>
 
+  <!-- ========================== GOOGLE CHATS  ============================================= -->
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <!-- ====================================================================================== -->
+
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
 
 
   <script src="components/homepage/_homapage.js"></script>
@@ -36,5 +43,9 @@
   <script src="components/group-profile/controllers/groupProfileCtrl.js"></script>
   <script src="components/group-profile/directives/groupProfile.js"></script>
   <script src="components/group-profile/directives/editMemberProfile.js"></script>
+
+
+  <script src="components/tests/_test.js"></script>
+  <script src="components/tests/controllers/testCtrl.js"></script>
 
   <script src="rout.js"></script>
