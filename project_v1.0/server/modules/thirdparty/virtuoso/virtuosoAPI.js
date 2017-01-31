@@ -258,6 +258,7 @@ module.exports = {
     query: query,
     queryTest: queryLGD,
     getLocations : getLocations,
+    queryFoods: queryFood,
     queryMuseums : queryMuseum,
     queryPOIs : queryPOI
 };
