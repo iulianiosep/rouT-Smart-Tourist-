@@ -6,6 +6,7 @@ angular.module('routApp', [
   'homepage',
   'groupProfile',
   'testModule',
+  'travelModule',
 
   'ngResource'
 ])
@@ -20,11 +21,12 @@ angular.module('routApp', [
 
     $locationProvider.html5Mode({
         enabled: true,
-        requireBase: false
+        requireBase: true,
+        rewriteLinks: false
     });
 
     $routeProvider
-      .when('/', {
+      .when('/home', {
         templateUrl: '/components/homepage/templates/homepageTpl.html',
         controller: 'homepageCtrl'
       })
@@ -32,12 +34,16 @@ angular.module('routApp', [
         templateUrl: '/components/group-profile/templates/groupProfileTpl.html',
         controller: 'groupProfileCtrl'
       })
-      .when('/test', {
+      .when('/test/', {
           templateUrl: '/components/tests/templates/test.html',
           controller: 'testCtrl'
       })
+      .when('/createTravel', {
+          templateUrl: '/components/travel/templates/createTravelTpl.html',
+          controller: 'createTravelCtrl'
+      })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/home'
       });
 
 }]);

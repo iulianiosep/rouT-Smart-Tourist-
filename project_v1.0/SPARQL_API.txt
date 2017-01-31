@@ -1,0 +1,63 @@
+Dydra Intern API description
+
+-- /groups/addNewGroup
+	POST:
+		- params: 
+			- groupName : name
+	
+		-reponse: 
+			-status: 201
+			-link to created resource
+	
+	
+#add existed Person to group	
+-- /groups/:groupName/addPerson
+	POST:
+		- params:
+			- personName : name
+		
+		-response:
+			-status: 201
+			- link to Group resource
+			
+#add NEW person to group (create person and add created person to the specified group)			
+--/groups/:groupName/addNewPerson
+	POST:
+		- params: 
+			-personName : name
+			
+		- reponse:
+			- status: 201
+			- body: link to the created resource
+
+-- /groups/:groupName/members
+	GET:
+		-reponse: list of <person-link>
+		
+-- /groups/:groupName/interests
+	GET:
+		-response: list of Strings 
+		
+			
+				
+-- /persons/addNewPerson
+	POST:
+		- params: 
+			-personName : name
+			
+		- reponse:
+			- status: 201
+			- body: link to the created resource
+
+		
+/persons/:personName/addInterest
+	POST:
+		-params:
+			-interestName : interest
+			
+			
+
+
+			
+			
+	
