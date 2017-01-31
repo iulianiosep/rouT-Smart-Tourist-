@@ -1,0 +1,19 @@
+#%RAML 1.0 ResourceType
+
+description: Item <<resourcePathName>> in XML format
+uses:
+  type: base.raml
+get:
+  responses:
+    200:
+      body:
+        application/xml:
+          example: |
+            <<exampleitemxml>>
+post:
+  description: Create a new <<resourcePathName|!singularize>>
+  responses:
+        201:
+          body:
+            application/xml:
+              type: <<itemXMLType>>

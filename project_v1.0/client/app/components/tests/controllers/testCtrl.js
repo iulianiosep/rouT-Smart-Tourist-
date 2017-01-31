@@ -9,6 +9,7 @@ angular.module('testModule').controller('testCtrl', [
   ) {
     'use strict';
 
+      // https://maps.googleapis.com/maps/api/directions/json?origin=iasi&destination=bucuresti&key=AIzaSyBV0TXuEUkziwGEB4hVoZPGiJC1E38aj6w
     var findMe = function () {
       var options = {
         enableHighAccuracy: true,
@@ -111,6 +112,83 @@ angular.module('testModule').controller('testCtrl', [
     };
 
 
-    $scope.findMe = findMe;
+      var test = function () {
+          function initMap() {
+              var pointA = new google.maps.LatLng(51.7519, -1.2578),
+                  pointB = new google.maps.LatLng(50.8429, -0.1313),
+                  myOptions = {
+                      zoom: 7,
+                      center: pointA
+                  },
+                  map = new google.maps.Map(document.getElementById('maps'), myOptions),
+                  // Instantiate a directions service.
+                  directionsService = new google.maps.DirectionsService,
+                  directionsDisplay = new google.maps.DirectionsRenderer({
+                      map: map
+                  }),
+                  markerA = new google.maps.Marker({
+                      position: pointA,
+                      title: "point A",
+                      label: "A",
+                      map: map
+                  }),
+                  markerB = new google.maps.Marker({
+                      position: pointB,
+                      title: "point B",
+                      label: "B",
+                      map: map
+                  });
+
+              // get route from A to B
+              calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB);
+
+          }
+
+          function calculateAndDisplayRoute(directionsService, directionsDisplay, pointA, pointB) {
+              directionsService.route({
+                  origin: pointA,
+                  destination: pointB,
+                  travelMode: google.maps.TravelMode.DRIVING
+              }, function(response, status) {
+                  if (status == google.maps.DirectionsStatus.OK) {
+                      directionsDisplay.setDirections(response);
+                  } else {
+                      window.alert('Directions request failed due to ' + status);
+                  }
+              });
+          }
+
+          initMap();
+
+      };
+
+      var initMap = function () {
+          var map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 8,
+              center: {lat: -34.397, lng: 150.644}
+          });
+          var geocoder = new google.maps.Geocoder();
+
+          document.getElementById('submit').addEventListener('click', function() {
+              geocodeAddress(geocoder, map);
+          });
+      };
+
+      var geocodeAddress =  function(geocoder, resultsMap) {
+          var address = document.getElementById('address').value;
+          geocoder.geocode({'address': address}, function(results, status) {
+              if (status === 'OK') {
+                  resultsMap.setCenter(results[0].geometry.location);
+                  var marker = new google.maps.Marker({
+                      map: resultsMap,
+                      position: results[0].geometry.location
+                  });
+              } else {
+                  alert('Geocode was not successful for the following reason: ' + status);
+              }
+          });
+      }
+
+      $scope.findMe = test;
   }
 ]);

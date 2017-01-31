@@ -5,12 +5,19 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+
+
 var index = require('./routes/index');
 var users = require('./routes/users');
 var group = require('./routes/group');
 var location = require('./routes/location');
+var dydra = require('./modules/dydra/dydraApi');
 
 var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -28,6 +35,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/group', group);
 app.use('/location', location);
+app.use('/dydra', dydra);
 
 // CORS
 app.use(function (req, res, next) {

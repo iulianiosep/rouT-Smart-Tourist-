@@ -1,0 +1,24 @@
+
+<foaf:Group>
+  <foaf:name>ILRT staff</foaf:name>
+  <foaf:member>
+   <foaf:Person>
+      <foaf:name>Martin Poulter</foaf:name>
+      <foaf:homepage rdf:resource="http://www.ilrt.bris.ac.uk/aboutus/staff/staffprofile/?search=plmlp"/>
+      <foaf:workplaceHomepage rdf:resource="http://www.ilrt.bris.ac.uk/"/>'
+      <foaf:age>12</foaf:age>
+   </foaf:Person>
+   <foaf:Person>
+      <foaf:name>Martin Poulter</foaf:name>
+      <foaf:homepage rdf:resource="http://www.ilrt.bris.ac.uk/aboutus/staff/staffprofile/?search=plmlp"/>
+      <foaf:workplaceHomepage rdf:resource="http://www.ilrt.bris.ac.uk/"/>
+      <foaf:age>12</foaf:age>
+   </foaf:Person>
+   <foaf:Person>
+    <foaf:name>Martin Poulter</foaf:name>
+    <foaf:homepage rdf:resource="http://www.ilrt.bris.ac.uk/aboutus/staff/staffprofile/?search=plmlp"/>
+    <foaf:workplaceHomepage r7df:resource="http://www.ilrt.bris.ac.uk/"/>
+    <foaf:age>12</foaf:age>
+   </foaf:Person>
+  </foaf:member>
+</foaf:Group>

@@ -1,0 +1,5 @@
+{
+  succes: false,
+  status: 404
+  response: 'The user profile not exists'
+}

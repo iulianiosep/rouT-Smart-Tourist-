@@ -1,0 +1,50 @@
+#%RAML 1.0 ResourceType
+get?:
+      responses: &standardResponses
+        200:
+          description: OK
+        301:
+          body:
+            application/json:
+              example: |
+                  {"message": "<<resourcePathName|!singularize>> moved permanently" }
+        304:
+          body:
+            application/json:
+              example: |
+                  {"message": "<<resourcePathName|!singularize>> not modified" }
+        400:
+          body:
+            application/json:
+              example: |
+                  {"message": "<<resourcePathName|!singularize>> bad request" }
+        401:
+          body:
+            application/json:
+              example: |
+                  {"message": "<<resourcePathName|!singularize>> unauthorized" }
+        404:
+          body:
+            application/json:
+              example: |
+                  {"message": "<<resourcePathName|!singularize>> not found" }
+        500:
+          body:
+            application/json:
+              example: |
+                  {"message": "Internal Server Error"}
+put?:
+  responses: &standardResponses
+    202:
+      body:
+        application/json:
+          example: |
+            {"message": "<<resourcePathName|!singularize>> updated"}
+patch?:
+  responses: *standardResponses
+post?:
+    responses:
+      201:
+        description: Created
+delete?:
+  responses: *standardResponses

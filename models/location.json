@@ -1,0 +1,16 @@
+{
+  "http://example.org/about" : {
+      "http://purl.org/dc/terms/creator" : [ { "value" : "_:location", 
+                                               "type" : "bnode" } ] ,
+  "_:travellerName" : {
+      "http://xmlns.com/foaf/0.1/name" : [ { "value" : "travellerName", 
+                                             "type" : "literal" } ],
+      "http://www.productontology.org/id/Travel" : [ { "value" : "http://rouT.com/location/", 
+                                                 "type" : "uri",
+												 "description": "small description of the area",
+												  "lat": "35.26",
+												  "long": "21.36",
+												  "error_tolerance": "0.5" } ] 
+                      }
+          }
+} 

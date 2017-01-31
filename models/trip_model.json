@@ -1,0 +1,16 @@
+{
+  "http://example.org/about" : {
+      "http://purl.org/dc/terms/creator" : [ { "value" : "_:tripName", 
+                                               "type" : "bnode" } ] ,
+  "_:travellerName" : {
+      "http://xmlns.com/foaf/0.1/name" : [ { "value" : "NoName", 
+                                             "type" : "literal" } ],
+      "http://www.smartTourist.com/travel/SbBGk" : [ { "value" : "http://rouT.com/{idTravel}", 
+                                                 "type" : "uri",
+												 "typeTrip": "with family",
+												  "cost": "10 000",
+												  "time": "3",
+												  "vehicle": "car" } ] 
+                      }
+          }
+} 

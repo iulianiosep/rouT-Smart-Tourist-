@@ -1,0 +1,52 @@
+<script type="text/ng-template" id="/components/travel/templates/travelComponent.html"></script>
+<div class="travel-area">
+
+  <div class="date-container">
+    <div class="star-date">
+      <label> Start date:</label>
+      <input
+        ng-model="travel.startDate"
+        type="date"/>
+    </div>
+    <div class="end-date">
+      <label> End date:</label>
+      <input
+        ng-model="travel.endDate"
+        type="date"/>
+    </div>
+  </div>
+
+  <div class="location-container">
+    <div class="begin-location">
+      <label> From:</label>
+      <input ng-model="travel.location.begin">
+    </div>
+    <div class="end-location">
+      <label> To: </label>
+      <input ng-model="travel.location.end">
+    </div>
+
+    <div class="end-location">
+      <label> STEP : </label>
+      <input ng-model="travel.location.step">
+    </div>
+
+  </div>
+
+
+  <div class="action-container">
+    <div>
+      <button ng-click="saveTravel()">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="map-area" style="width: 80%; margin: 0 auto; height: 400px">
+  <div id="maps" style="width:400px; height: 400px; border: 3px solid darkgreen"></div>
+</div>
+<div>
+  <select ng-options="label for label in modeTravel" ng-model="travel.selectedMode"></select>
+</div>
+---------------
+{{travel.selectedMode }}
+

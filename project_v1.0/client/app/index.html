@@ -4,6 +4,7 @@
 <!--[if IE 8]>         <html lang="en" ng-app="routApp" class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" ng-app="routApp" class="no-js"> <!--<![endif]-->
 <head>
+  <base href="/">
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Smart Tourist</title>
@@ -20,13 +21,21 @@
   <link rel="stylesheet" href="public/styles/css/groupProfile/groupProfile.css">
 
 </head>
-<a href="/test"> TEST Page </a>
 <body  ng-cloak>
+ <ng-include src="'/components/homepage/templates/headerTpl.html'"></ng-include>
+
   <div ng-view></div>
 
   <!-- ========================== GOOGLE CHATS  ============================================= -->
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+  <script type="text/javascript" src="public/js/googleCharts.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+ <!--<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
+ <!--<script-->
+         <!--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBV0TXuEUkziwGEB4hVoZPGiJC1E38aj6w&callback=initMap">-->
+ <!--</script>-->
+ <script async defer
+         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHsbZYcDrds6NKc3L7X7m6xaOBdhRx9KQ">
+ </script>
   <!-- ====================================================================================== -->
 
   <script src="bower_components/angular/angular.js"></script>
@@ -48,4 +57,15 @@
   <script src="components/tests/_test.js"></script>
   <script src="components/tests/controllers/testCtrl.js"></script>
 
+
+  <script src="components/travel/_travel.js"></script>
+  <script src="components/travel/controllers/createTravelCtrl.js"></script>
+  <script src="components/travel/directives/createTravel.js"></script>
+
   <script src="rout.js"></script>
+
+
+ <!--//  AIzaSyBV0TXuEUkziwGEB4hVoZPGiJC1E38aj6w-->
+
+ <!--// google maps js API-->
+ <!--//AIzaSyBHsbZYcDrds6NKc3L7X7m6xaOBdhRx9KQ-->
