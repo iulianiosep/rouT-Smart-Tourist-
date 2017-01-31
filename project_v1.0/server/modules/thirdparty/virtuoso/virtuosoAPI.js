@@ -98,6 +98,89 @@ var queryLGD = function(spec){
     });
 };
 
+var queryMuseum = function(spec){
+    var
+        queryString,
+        client,
+
+    client = new sparql.Client(config.SPARQL_ENDPOINT);
+
+    queryString = 'SELECT  ?museum ?abstract   WHERE { ' +
+        '?museum <http://dbpedia.org/ontology/abstract> ?abstract.' +
+        '?museum a <http://dbpedia.org/ontology/Museum>.' +
+    '?artwork <http://dbpedia.org/ontology/location> ?museum.' +
+        '}"';
+
+    client.query(queryString, function(err,res){
+        if(err){
+            console.log(err);
+        }else{
+            spec.cb(res.results.bindings);
+        }
+    });
+};
+
+var queryFood = function(spec){
+    var
+        queryString,
+        client,
+
+        client = new sparql.Client(config.SPARQL_ENDPOINT);
+
+    queryString = ' SELECT ?food '+
+    'WHERE {' +
+        '?food rdf:type <http://dbpedia.org/class/yago/Desserts>'+
+    '}'+
+    'ORDER BY ?name';
+
+    client.query(queryString, function(err,res){
+        if(err){
+            console.log(err);
+        }else{
+            spec.cb(res.results.bindings);
+        }
+    });
+};
+
+var queryPOI = function(spec){
+    var
+        vocabularies = ['rdfs', 'ogc', 'geom', 'lgdo'],
+        queryString,
+        position,
+        client,
+        prefxs,
+        from,
+        limit = spec.options.limit || 15,
+        accuracy = spec.options.position.accuracy || 0.1;
+
+    client = new sparql.Client(config.SPARQL_ENDPOINT);
+
+    position = spec.options.position;
+
+    //position = {lat:26.1027436 , lng: 44.436139 };  // buresti
+
+    prefxs = getPrefix(vocabularies);
+    from = '<' + taxonomy['lgda'] + '>';
+
+    queryString = 'PREFIX geo: <http://www.w3.org/2003/01/geo/wgs84_pos#>' +
+       'PREFIX dbo: <http://dbpedia.org/ontology/>' +
+        'PREFIX dcterms: <http://purl.org/dc/terms/>' +
+        'SELECT * WHERE {'+
+        '?s a dbo:Place .'+
+            '?s geo:lat ?lat .'+
+            '?s geo:long ?long .'+
+            '?s a ?type .'+
+            '?s dcterms:subject ?sub'+
+     + limit + '}';
+
+    client.query(queryString, function(err,res){
+        if(err){
+            console.log(err);
+        }else{
+            spec.cb(res.results.bindings);
+        }
+    });
+};
 /**
  * Get locations in a specific language
  * @param cb
@@ -174,5 +257,8 @@ var getLocations = function(position, accuracy,limit, lang, cb){
 module.exports = {
     query: query,
     queryTest: queryLGD,
-    getLocations : getLocations
+    getLocations : getLocations,
+    queryFoods: queryFood,
+    queryMuseums : queryMuseum,
+    queryPOIs : queryPOI
 };
