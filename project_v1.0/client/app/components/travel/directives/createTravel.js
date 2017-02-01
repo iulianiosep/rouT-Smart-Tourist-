@@ -79,8 +79,12 @@ angular.module('travelModule').directive('createTravel', [
                             infowindowPointB.open(map, markerB);
                         });
 
+                        // console.log('Push waypoints', scope.travel.location);
+                        // var lat = scope.travel.location.stepLocation.lat();
+                        // var lng = scope.travel.location.stepLocation.lng();
+                        // console.log('lat, lng', lat, lng);
                         // waypts.push({
-                        //     location: scope.travel.location.stepObject.place_id,
+                        //     location: new google.maps.LatLng(lat,lng),
                         //     stopover: true
                         // });
 
@@ -144,27 +148,27 @@ angular.module('travelModule').directive('createTravel', [
                                         resultsMap.setCenter(results[0].geometry.location);
                                         scope.travel.location.endLocation = results[0].geometry.location;
                                         scope.travel.location.endObj = results[0];
-                                        cb();
+                                        // cb();
 
-                                        // var marker = new google.maps.Marker({
-                                        //     map: resultsMap,
-                                        //     position: results[0].geometry.location
-                                        // });
-                                        // geocoder.geocode({'address': step}, function(results, status) {
-                                        //     if (status === 'OK') {
-                                        //         resultsMap.setCenter(results[0].geometry.location);
-                                        //         scope.travel.location.stepLocation = results[0].geometry.location;
-                                        //         scope.travel.location.stepObject = results[0];
-                                        //
-                                        //         cb();
-                                        //         // var marker = new google.maps.Marker({
-                                        //         //     map: resultsMap,
-                                        //         //     position: results[0].geometry.location
-                                        //         // });
-                                        //     } else {
-                                        //         alert('Step location not found: ' + status);
-                                        //     }
-                                        // })
+                                        var marker = new google.maps.Marker({
+                                            map: resultsMap,
+                                            position: results[0].geometry.location
+                                        });
+                                        geocoder.geocode({'address': step}, function(results, status) {
+                                            if (status === 'OK') {
+                                                resultsMap.setCenter(results[0].geometry.location);
+                                                scope.travel.location.stepLocation = results[0].geometry.location;
+                                                scope.travel.location.stepObject = results[0];
+
+                                                cb();
+                                                // var marker = new google.maps.Marker({
+                                                //     map: resultsMap,
+                                                //     position: results[0].geometry.location
+                                                // });
+                                            } else {
+                                                alert('Step location not found: ' + status);
+                                            }
+                                        })
                                     } else {
                                         alert('Second location not found: ' + status);
                                     }

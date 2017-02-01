@@ -2,39 +2,58 @@ angular.module('homepage').controller('homepageCtrl', [
   '$scope',
   '$location',
   '$rootScope',
+    '$cookies',
+    '$resource',
+    '$http',
   function (
     $scope,
     $location,
-    $rootScope
+    $rootScope,
+    $cookies,
+    $resource,
+    $http
   ) {
     'use strict';
 
     //$location.path('/group-profile');
 
+
+    $scope.isLogged = false;
     $scope.close = function () {
       $scope.showpopup = false;
     };
 
     $scope.confirm = function (data) {
       $scope.showpopup = false;
+      $scope.isLogged = true;
+      $cookies.put('isLogged', true);
+      $cookies.put('groupName', data.fields[0].value );
 
-      $rootScope.group = {
-        name: 'GROUP NAME',
-        members: [
+      $http.post('http://localhost:3000/dydra/api/groups/addNewGroup',
           {
-            name: 'user1'
-          },
-          {
-            name: 'user2'
-          },
-          {
-            name: 'user3'
+            groupName: data.fields[0].value
           }
-        ]
+          ).then(function (data) {
+            console.log('SUCCEs', data);
+          }, function (err) {
+            console.log('ERR', err)
+          });
 
-      };
-
-      $location.path('/group-profile');
+    //   var group = $resource('http://localhost:3000/dydra/api/groups/addNewGroup', {
+    //     groupName:'@groupN'
+    //   });
+    //
+    //   group.post(
+    //       {
+    //         groupN:data.fields[0].value
+    //       },
+    //       function (data) {
+    //         console.log('SAVEEEEE');
+    //         // spec.options.cb(data.data) ;
+    //       },
+    //       function(err) {
+    //         console.log('Error', err);
+    //       });
     };
 
     $scope.pressSignup = function () {
@@ -81,5 +100,12 @@ angular.module('homepage').controller('homepageCtrl', [
       };
       $scope.showpopup = true;
     };
+
+    $scope.pressSignOut = function () {
+      $scope.isLogged = false;
+      $cookies.remove('isLogged');
+    };
+
+
   }
 ]);

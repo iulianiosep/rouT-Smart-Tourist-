@@ -1,5 +1,5 @@
 <script type="text/ng-template" id="/components/group-profile/templates/groupProfileTpl.html"></script>
-
+<ng-include src="'/components/homepage/templates/headerTpl.html'"></ng-include>
 
 <div class="center-content group-profile-content">
     <div class="group-name">{{ group.name }}</div>
@@ -32,4 +32,8 @@
 
     </div>
     <button ng-click="addMember()">Add member</button>
+</div>
+<div>
+    <label> Show interests group</label>
+    <button ng-click="getInterests()">Show</button>
 </div>

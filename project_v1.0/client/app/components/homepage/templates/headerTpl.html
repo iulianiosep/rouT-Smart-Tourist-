@@ -1,10 +1,12 @@
 <script type="text/ng-template" id="/components/homepage/templates/headerTpl.html"></script>
 <header class="background-header">
     <ul class="header-container">
+
         <div>
             <img src="../../../public/images/logo.png">
         </div>
-        <div class="header-category">
+        <div    ng-show="isLogged"
+                class="header-category">
             <li class="header-item">
                 <a href="/#/home">Home</a>
             </li>
@@ -16,10 +18,19 @@
             </li>
         </div>
 
-        <div class="header-category">
+        <div
+                ng-hide="isLogged"
+                class="header-category">
             <li class="header-item" ng-click="pressSignup()"> Sign up</li>
             <li class="header-item" ng-click="pressSignin()"> Sign in</li>
         </div>
+
+        <div
+                ng-show="isLogged"
+                class="header-category">
+            <li class="header-item" ng-click="pressSignOut()"> Sign out</li>
+        </div>
+
 
     </ul>
 </header>
