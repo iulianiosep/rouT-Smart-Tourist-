@@ -1,28 +1,31 @@
 angular.module('groupProfile').controller('groupProfileCtrl', [
   '$scope',
   '$rootScope',
+  '$cookies',
+  '$location',
   function (
     $scope,
-    $rootScope
+    $rootScope,
+    $cookies,
+    $location
   ) {
 
     'use strict';
 
-    $rootScope.group = {
-      name: 'myGroup',
-      members: [
-        {
-          name: 'user1'
-        },
-        {
-          name: 'user2'
-        },
-        {
-          name: 'user3'
-        }
-      ]};
+    $scope.group = {
+      name : $cookies.get('groupName'),
+      members:[]
+    };
+    $scope.isLogged = $cookies.get('isLogged');
 
-    $scope.group = $rootScope.group;
+    $scope.getInterests = function () {
+      
+    };
+    $scope.pressSignOut = function () {
+      $scope.isLogged = false;
+      $cookies.remove('isLogged');
+      $location.path('/home');
+    };
 
     $scope.addMember = function () {
       $scope.group.members.push({

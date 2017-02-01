@@ -22,11 +22,12 @@
 
 </head>
 <body  ng-cloak>
- <ng-include src="'/components/homepage/templates/headerTpl.html'"></ng-include>
+  <!--<ng-include src="'/components/homepage/templates/headerTpl.html'"></ng-include>-->
 
   <div ng-view></div>
 
   <!-- ========================== GOOGLE CHATS  ============================================= -->
+  <!--<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-cookies.js"></script>-->
   <script type="text/javascript" src="public/js/googleCharts.js"></script>
   <script type="text/javascript" src="https://www.google.com/jsapi"></script>
  <!--<script src="https://maps.googleapis.com/maps/api/js?sensor=false"></script>-->
@@ -36,12 +37,14 @@
  <script async defer
          src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHsbZYcDrds6NKc3L7X7m6xaOBdhRx9KQ">
  </script>
+
+
   <!-- ====================================================================================== -->
 
   <script src="bower_components/angular/angular.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
-
+  <script src="bower_components/angular-cookies/angular-cookies.min.js" ></script>
 
   <script src="components/homepage/_homapage.js"></script>
   <script src="components/homepage/controllers/homepageCtrl.js"></script>
