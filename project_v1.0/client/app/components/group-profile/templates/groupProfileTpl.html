@@ -36,4 +36,12 @@
 <div>
     <label> Show interests group</label>
     <button ng-click="getInterests()">Show</button>
+
+    <div class="group-interests">
+        <div
+                ng-repeat="interest in interestsGroup track by $index">
+            {{ interest }}
+    </div>
+
+    </div>
 </div>

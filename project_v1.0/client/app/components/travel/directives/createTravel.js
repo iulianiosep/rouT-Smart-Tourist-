@@ -1,6 +1,8 @@
 angular.module('travelModule').directive('createTravel', [
-
-    function () {
+    '$cookies',
+    function (
+        $cookies
+    ) {
         'use strict';
 
         return {
@@ -10,6 +12,7 @@ angular.module('travelModule').directive('createTravel', [
                 save: '&'
             },
             link: function (scope, elem, attr, ctrl) {
+                scope.isLogged = $cookies.get('isLogged');
                 // DRIVING WALKING  BICYCLING TRANSIT
                 scope.modeTravel = ["DRIVING", "WALKING",  "BICYCLING", "TRANSIT" ];
                 scope.travel = {
@@ -205,10 +208,11 @@ angular.module('travelModule').directive('createTravel', [
 
                 scope.saveTravel = function () {
                     initMap();
+                    scope.showMap =  true;
                     // scope.save({
                     //     data: scope.travel
                     // });
-                }
+                };
 
                 scope.$watch('travel.selectedMode', function (oldVal, newVal) {
                     if(oldVal !== newVal){

@@ -26,11 +26,11 @@ angular.module('groupProfile').directive('editMemberProfile', [
             scope.show = false;
         };
         scope.saveAction = function () {
-          scope.data = scope.user;
-          scope.show = false;
+           // scope.data = scope.user;
+            scope.show = false;
 
-          var urlInterest = 'http://localhost:3000/dydra/api/' + scope.user.name + '/addInterest';
-          var urlAddperson = 'http://localhost:3000/dydra/api/p ersons/addNewPerson';
+          var urlInterest = 'http://localhost:3000/dydra/api/persons/' + scope.user.name + '/addInterest';
+          var urlAddperson = 'http://localhost:3000/dydra/api/persons/addNewPerson';
 
           function addNewPerson() {
             $http.post(urlAddperson,
@@ -40,16 +40,15 @@ angular.module('groupProfile').directive('editMemberProfile', [
             ).then(function (data) {
               console.log('Succes addded persone', data);
 
-              $http.post(urlInterest,
-                  {
-                    personName: scope.user.name,
-                    interest : scope.user.interest
-                  }
-              ).then(function (data) {
-                console.log('Succes added interest', data);
-              }, function (err) {
-                console.log('ERR', err)
-              });
+              // $http.post(urlInterest,
+              //     {
+              //       interestName : scope.user.interest
+              //     }
+              // ).then(function (data) {
+              //   console.log('Succes added interest', data);
+              // }, function (err) {
+              //   console.log('ERR', err)
+              // });
 
             }, function (err) {
               console.log('ERR', err)
@@ -58,8 +57,7 @@ angular.module('groupProfile').directive('editMemberProfile', [
           function addNewInterest() {
               $http.post(urlInterest,
                   {
-                    personName: scope.user.name,
-                    interest : scope.user.interest
+                    interestName : scope.user.interest
                   }
               ).then(function (data) {
                 console.log('Succes added interest', data);
@@ -68,13 +66,19 @@ angular.module('groupProfile').directive('editMemberProfile', [
               });
           }
 
-          if(scope.data.name !== scope.user.name){
-            addNewPerson();
-          } else {
-            addNewInterest();
+
+          if(scope.data.name !== scope.user.name ){
+              addNewPerson();
+          }  {
+             addNewInterest();
           }
 
+
+
         }
+
+
+          
       }
     }
   }

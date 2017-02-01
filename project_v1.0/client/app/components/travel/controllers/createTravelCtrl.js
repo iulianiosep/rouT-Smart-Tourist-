@@ -9,7 +9,6 @@ angular.module('travelModule').controller('createTravelCtrl', [
             console.log('Cotnriler ', data);
         };
 
-        $scope.isLogged = $cookies.get('isLogged');
         
     }
 ]);

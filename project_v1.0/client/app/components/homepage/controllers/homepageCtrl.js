@@ -34,7 +34,7 @@ angular.module('homepage').controller('homepageCtrl', [
             groupName: data.fields[0].value
           }
           ).then(function (data) {
-            console.log('SUCCEs', data);
+            console.log('Succes', data);
           }, function (err) {
             console.log('ERR', err)
           });

@@ -3,11 +3,15 @@ angular.module('groupProfile').controller('groupProfileCtrl', [
   '$rootScope',
   '$cookies',
   '$location',
+    '$resource',
+    '$http',
   function (
     $scope,
     $rootScope,
     $cookies,
-    $location
+    $location,
+    $resource,
+    $http
   ) {
 
     'use strict';
@@ -19,8 +23,21 @@ angular.module('groupProfile').controller('groupProfileCtrl', [
     $scope.isLogged = $cookies.get('isLogged');
 
     $scope.getInterests = function () {
-      
+      var url = 'http://localhost:3000/dydra/api/groups/Golanii/interests';
+
+      $http({
+        method: 'GET',
+        url: url
+      }).then(function successCallback(response) {
+         console.log('Succes', response);
+        $scope.interestsGroup = response.data.data;
+        
+      }, function errorCallback(response) {
+        console.log('Error', response);
+
+      });
     };
+
     $scope.pressSignOut = function () {
       $scope.isLogged = false;
       $cookies.remove('isLogged');
