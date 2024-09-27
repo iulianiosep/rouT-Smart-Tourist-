@@ -1,28 +1,48 @@
 angular.module('groupProfile').controller('groupProfileCtrl', [
   '$scope',
   '$rootScope',
+  '$cookies',
+  '$location',
+    '$resource',
+    '$http',
   function (
     $scope,
-    $rootScope
+    $rootScope,
+    $cookies,
+    $location,
+    $resource,
+    $http
   ) {
 
     'use strict';
 
-    $rootScope.group = {
-      name: 'myGroup',
-      members: [
-        {
-          name: 'user1'
-        },
-        {
-          name: 'user2'
-        },
-        {
-          name: 'user3'
-        }
-      ]};
+    $scope.group = {
+      name : $cookies.get('groupName'),
+      members:[]
+    };
+    $scope.isLogged = $cookies.get('isLogged');
 
-    $scope.group = $rootScope.group;
+    $scope.getInterests = function () {
+      var url = 'http://localhost:3000/dydra/api/groups/Golanii/interests';
+
+      $http({
+        method: 'GET',
+        url: url
+      }).then(function successCallback(response) {
+         console.log('Succes', response);
+        $scope.interestsGroup = response.data.data;
+        
+      }, function errorCallback(response) {
+        console.log('Error', response);
+
+      });
+    };
+
+    $scope.pressSignOut = function () {
+      $scope.isLogged = false;
+      $cookies.remove('isLogged');
+      $location.path('/home');
+    };
 
     $scope.addMember = function () {
       $scope.group.members.push({

@@ -1,6 +1,8 @@
 angular.module('travelModule').directive('createTravel', [
-
-    function () {
+    '$cookies',
+    function (
+        $cookies
+    ) {
         'use strict';
 
         return {
@@ -10,6 +12,7 @@ angular.module('travelModule').directive('createTravel', [
                 save: '&'
             },
             link: function (scope, elem, attr, ctrl) {
+                scope.isLogged = $cookies.get('isLogged');
                 // DRIVING WALKING  BICYCLING TRANSIT
                 scope.modeTravel = ["DRIVING", "WALKING",  "BICYCLING", "TRANSIT" ];
                 scope.travel = {
@@ -79,8 +82,12 @@ angular.module('travelModule').directive('createTravel', [
                             infowindowPointB.open(map, markerB);
                         });
 
+                        // console.log('Push waypoints', scope.travel.location);
+                        // var lat = scope.travel.location.stepLocation.lat();
+                        // var lng = scope.travel.location.stepLocation.lng();
+                        // console.log('lat, lng', lat, lng);
                         // waypts.push({
-                        //     location: scope.travel.location.stepObject.place_id,
+                        //     location: new google.maps.LatLng(lat,lng),
                         //     stopover: true
                         // });
 
@@ -144,27 +151,27 @@ angular.module('travelModule').directive('createTravel', [
                                         resultsMap.setCenter(results[0].geometry.location);
                                         scope.travel.location.endLocation = results[0].geometry.location;
                                         scope.travel.location.endObj = results[0];
-                                        cb();
+                                        // cb();
 
-                                        // var marker = new google.maps.Marker({
-                                        //     map: resultsMap,
-                                        //     position: results[0].geometry.location
-                                        // });
-                                        // geocoder.geocode({'address': step}, function(results, status) {
-                                        //     if (status === 'OK') {
-                                        //         resultsMap.setCenter(results[0].geometry.location);
-                                        //         scope.travel.location.stepLocation = results[0].geometry.location;
-                                        //         scope.travel.location.stepObject = results[0];
-                                        //
-                                        //         cb();
-                                        //         // var marker = new google.maps.Marker({
-                                        //         //     map: resultsMap,
-                                        //         //     position: results[0].geometry.location
-                                        //         // });
-                                        //     } else {
-                                        //         alert('Step location not found: ' + status);
-                                        //     }
-                                        // })
+                                        var marker = new google.maps.Marker({
+                                            map: resultsMap,
+                                            position: results[0].geometry.location
+                                        });
+                                        geocoder.geocode({'address': step}, function(results, status) {
+                                            if (status === 'OK') {
+                                                resultsMap.setCenter(results[0].geometry.location);
+                                                scope.travel.location.stepLocation = results[0].geometry.location;
+                                                scope.travel.location.stepObject = results[0];
+
+                                                cb();
+                                                // var marker = new google.maps.Marker({
+                                                //     map: resultsMap,
+                                                //     position: results[0].geometry.location
+                                                // });
+                                            } else {
+                                                alert('Step location not found: ' + status);
+                                            }
+                                        })
                                     } else {
                                         alert('Second location not found: ' + status);
                                     }
@@ -201,10 +208,11 @@ angular.module('travelModule').directive('createTravel', [
 
                 scope.saveTravel = function () {
                     initMap();
+                    scope.showMap =  true;
                     // scope.save({
                     //     data: scope.travel
                     // });
-                }
+                };
 
                 scope.$watch('travel.selectedMode', function (oldVal, newVal) {
                     if(oldVal !== newVal){

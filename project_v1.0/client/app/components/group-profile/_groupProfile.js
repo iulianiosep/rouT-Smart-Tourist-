@@ -1,1 +1,1 @@
-angular.module('groupProfile',[]);
+angular.module('groupProfile',['ngCookies']);
